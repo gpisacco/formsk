@@ -1,0 +1,9 @@
+backend.zip
+frontend.zip
+graphics-web.zip
+coverage
+node_modules
+./backend/node_modules
+./backend/coverage
+./frontend/node_modules
+./frontend/coverage

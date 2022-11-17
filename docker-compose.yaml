@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:14.1-alpine
+    restart: always
+    networks:
+      - backend
+    environment:
+      # to the database
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=root
+    ports:
+      # Standard port for PostgreSQL databases
+      - "5432:5432"
+  api:
+    image: sample-express-app
+    build: ./backend
+    networks:
+      - backend
+    ports:
+      - "8080:8080"
+    environment:
+      # You can set the value of environment variables
+      # in your docker-compose.yml file
+      # Our Node app will use these to connect
+      # to the database
+      - DATABASE_URL=postgresql://root:root@postgres:/root?schema=public
+  frontend:
+    image: sample-express-app1
+    build: ./frontend
+    networks:
+      - backend
+    ports:
+      - "3000:3000"
+networks:
+  backend:
+    driver: bridge
