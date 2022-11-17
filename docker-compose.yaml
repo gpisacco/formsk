@@ -33,6 +33,13 @@ services:
       - backend
     ports:
       - "3000:3000"
+  graph:
+    image: sample-express-app2
+    build: ./graphics-web
+    networks:
+      - backend
+    ports:
+      - "5001:5001"
 networks:
   backend:
     driver: bridge
