@@ -3,7 +3,7 @@
 Run
 ```bash
 docker-compose build
-docker-compose build up
+docker-compose up
 ```
 
 # Backend
